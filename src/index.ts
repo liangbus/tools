@@ -8,6 +8,7 @@ import { priceFormatted } from '../utils/priceFormatted';
 import { genRandomNumber } from '../utils/genRandomNumber';
 import { genUUID } from '../utils/generateUUID';
 import { fibonanceSequence, fibonanceSequenceInRecursive } from '../utils/fibonacciSequence';
+import { mockSetInterval } from '../utils/mockSetInterval';
 
 const longest1 = lengthOfLongestSubstring('aksjdgbndbfaligufa')
 console.log('string "aksjdgbndbfaligufa" the longest substring length >>> ', longest1)
@@ -73,3 +74,7 @@ console.log('generated uuid >>> ', genUUID(20));
 info('===============================================')
 console.log('fibonanceSequence >', fibonanceSequence(20));
 console.log('fibonanceSequenceInRecursive >', fibonanceSequenceInRecursive(20));
+
+mockSetInterval(() => {
+  console.log('I am a mock setInterval');
+}, 1000)
