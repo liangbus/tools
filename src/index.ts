@@ -10,7 +10,8 @@ import { genUUID } from '../utils/generateUUID';
 import { fibonanceSequence, fibonanceSequenceInRecursive } from '../utils/fibonacciSequence';
 import { mockSetInterval } from '../utils/mockSetInterval';
 import { recursiveFlattening, arrayFlattening } from '../utils/flatten'
-
+import throttle from '../utils/throttle'
+require('./sass/index.scss')
 const longest1 = lengthOfLongestSubstring('aksjdgbndbfaligufa')
 console.log('string "aksjdgbndbfaligufa" the longest substring length >>> ', longest1)
 
@@ -80,6 +81,10 @@ console.log('fibonanceSequenceInRecursive >', fibonanceSequenceInRecursive(20));
 //   console.log('I am a mock setInterval');
 // }, 1000)
 
-const beforeFlattenArr = [1, 22, 41, [22,12, [1,34,51],65,4] ,3,123,27,8,9,6, [123,231,[13,7,534,46,34,[45,54],4],22,3],5,45,4,345,56];
+const beforeFlattenArr = [1, 22, 41, [22, 12, [1, 34, 51], 65, 4], 3, 123, 27, 8, 9, 6, [123, 231, [13, 7, 534, 46, 34, [45, 54], 4], 22, 3], 5, 45, 4, 345, 56];
 console.log(`after recursiveFlattening: `, recursiveFlattening(beforeFlattenArr));
 console.log(`after arrayFlattening`, arrayFlattening(beforeFlattenArr));
+
+document.onscroll = throttle(() => {
+  console.log(`scroll 事件执行 -> ${new Date().getTime()}`)
+}, 800, this)
