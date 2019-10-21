@@ -11,6 +11,7 @@ import { fibonanceSequence, fibonanceSequenceInRecursive } from '../utils/fibona
 import { mockSetInterval } from '../utils/mockSetInterval';
 import { recursiveFlattening, arrayFlattening } from '../utils/flatten'
 import throttle from '../utils/throttle'
+require('../utils/caller')
 require('./sass/index.scss')
 const longest1 = lengthOfLongestSubstring('aksjdgbndbfaligufa')
 console.log('string "aksjdgbndbfaligufa" the longest substring length >>> ', longest1)
