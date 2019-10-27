@@ -1,7 +1,10 @@
 const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.ts',
+  entry: './src/index.tsx',
   devtool: 'inline-source-map',
   module: {
     rules: [
@@ -23,6 +26,17 @@ module.exports = {
     filename: 'app.js',
     path: path.resolve(__dirname, 'dist')
   },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    // 模板插件
+    new HtmlWebpackPlugin({
+      // 指定入口模板
+      template: './src/index.html',
+      hash: true
+    }),
+    // 最新版本不需要传目标目录，自动读取 output 下的 path
+    new CleanWebpackPlugin()
+  ],
   devServer: {
     port: 9000,
     index: 'index.html',

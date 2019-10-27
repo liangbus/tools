@@ -29,8 +29,8 @@ Function.prototype.__bind__ = function(context, ...args) {
   let thisFunc = this
   function __bound__() {
     return thisFunc.apply(
-      this instanceof __bound__ ?
-        this : context || window,
+      thisFunc instanceof __bound__ ?
+      thisFunc : context || window,
       args
     )
   }

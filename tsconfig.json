@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
+    "outDir": "./dist/",
     "module": "es2015",
     // Target latest version of ECMAScript.
-    "target": "esnext",
+    "target": "es5",
     // Search under node_modules for non-relative imports.
     "moduleResolution": "node",
     "sourceMap": true,
@@ -15,7 +16,8 @@
     // Disallow features that require cross-file information for emit.
     // "isolatedModules": true,
     // Import non-ES modules as default imports.
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "jsx": "react"
   },
   "include": [
     "src"
