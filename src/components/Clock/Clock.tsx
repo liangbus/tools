@@ -19,11 +19,11 @@ class Clock extends React.Component<ClockProps, ClockState> {
     
   }
   // Warning: componentWillMount has been renamed, and is not recommended for use. See https://fb.me/react-unsafe-component-lifecycles for details.
-  componentWillMount() {
-    console.info('componentWillMount Life Cycle')
-  }
+  // componentWillMount() {
+  //   // console.info('componentWillMount Life Cycle')
+  // }
   componentDidMount() {
-    console.info('componentDidMount Life Cycle')
+    // console.info('componentDidMount Life Cycle')
     setInterval(() => {
       let d = new Date()
       this.setState({
@@ -40,9 +40,10 @@ class Clock extends React.Component<ClockProps, ClockState> {
     // console.log(`hour = ${hour}, min = ${min}, sec = ${sec}`)
     return true
   }
-  componentWillReceiveProps() {
-    console.log('componentWillReceiveProps Life cycle.')
-  }
+  // Warning: componentWillReceiveProps has been renamed
+  // componentWillReceiveProps() {
+  //   console.log('componentWillReceiveProps Life cycle.')
+  // }
   render() {
     const { hour, min, sec } = this.state
     return (

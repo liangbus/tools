@@ -1,0 +1,25 @@
+.code-analysis-section{
+  color: #666;
+  padding: 30px 15px 30px 0;
+  margin: 20px;
+  font-size: 18px;
+  line-height: 24px;
+  border-top: 1px dashed #cdcdcd;
+  border-bottom: 1px dashed #cdcdcd;
+  .code-block{
+    width: 600px;
+  }
+  .code-field-title{
+    margin-bottom: 10px;
+  }
+  .code-field{
+    color: #000;
+    padding: 16px;
+    font-size: 12px;
+    line-height: 16px;
+    border: 1px solid #efefef;
+    border-radius: 5px;
+    overflow: auto;
+    background-color: #f6f8fa;
+  }
+}
