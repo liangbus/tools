@@ -6,10 +6,11 @@
  */
 const debounce = (fn: Function, delay: number, context: Object): Object => {
   let timer = null
-  return function() {
+  return function(...args: any) {
     timer && clearTimeout(timer)
     timer = setTimeout(() => {
-      fn.call(context)
+      // 使用 apply 则不需要 ...
+      fn.call(context, ...args)
     }, delay)
   }
 }

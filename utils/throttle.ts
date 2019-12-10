@@ -6,10 +6,10 @@
  */
 const throttle = (fn: Function, delay: number, context: Object): any => {
   let lastTime = 0
-  return function() {
+  return function(...args: any) {
     const now = new Date().getTime()
     if(now - lastTime > delay) {
-      fn.call(context)
+      fn.call(context, ...args)
       lastTime = now
     }
   }
