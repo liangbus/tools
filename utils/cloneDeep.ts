@@ -8,7 +8,7 @@ function cloneDeep(target, hash = new WeakMap()) {
   if (typeof target !== 'object' || hash.has(target)) return target
   // 数组类型
   if(Array.isArray(target)) {
-    const res = []
+    const res = new Array()
     for(let item of target){
       if(typeof item === 'object') {
         res.push(cloneDeep(item))
@@ -24,7 +24,7 @@ function cloneDeep(target, hash = new WeakMap()) {
   } else if (typeof target === 'object') { // 对象类型
     // 遍历对象中包含 Symbol 类型的所有 key 值，存到一个累加器当中
     return [...Object.keys(target), ...Object.getOwnPropertySymbols(target)].reduce((res, curKey) => {
-      if (typeof target[curKey] === 'object') {
+      if (typeof target[curKey] === 'object' && !Array.isArray(target[curKey])) {
         hash.set(target[curKey], target[curKey])
       }
       res[curKey] = cloneDeep(target[curKey], hash)
