@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const devServerConfig = require('./webpack.dev.server.config');
 const mySimpleWebpackPlugin = require('../plugins/simplePlugin');
@@ -22,10 +22,23 @@ module.exports = {
         test: /\.scss$/,
         // use: ['style-loader', 'css-loader', 'sass-loader'],
         // 避免页面混入过多样式文件
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: ["css-loader", "sass-loader"]
-        })
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: process.env.NODE_ENV === 'development',
+            },
+          },
+          // style-loader conflict with MiniCssExtractPlugin https://github.com/webpack-contrib/mini-css-extract-plugin/issues/173
+          // 'style-loader',
+          'css-loader',
+          'sass-loader'
+        ],
+        // Since webpack v4 the extract-text-webpack-plugin should not be used for css
+        // use: ExtractTextPlugin.extract({
+        //   fallback: "style-loader",
+        //   use: ["css-loader", "sass-loader"]
+        // })
       },
       {
         test: /\.tsx?$/,
@@ -47,7 +60,11 @@ module.exports = {
   },
   plugins: [
     // 将脚本中引入的样式抽象出独立的样式文件
-    new ExtractTextPlugin("styles.css"),
+    // new ExtractTextPlugin("styles.css"),
+    new MiniCssExtractPlugin({
+  　　filename: "[name].[chunkhash:8].css",
+  　　 chunkFilename: "[id].css"
+　　 }),
     new webpack.HotModuleReplacementPlugin(),
     // 模板插件
     new HtmlWebpackPlugin({
