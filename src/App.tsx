@@ -1,5 +1,7 @@
 import * as React from 'react'
 import { SimpleCounting } from './components/Button/SimpleCounting'
+import StateProvider from './components/serviceProvider/StateProvider/StateProvider'
+import Loading from './components/Loading/Loading'
 import { Clock } from './components/Clock/Clock'
 import './sass/reset.scss';
 import './sass/App.scss'
@@ -14,11 +16,12 @@ export class App extends React.Component {
   }
   render() {
     return (
-      <div className="app-comp">
+      <StateProvider>
         <Clock name="clockComponent" />
+        <Loading />
         <SimpleCounting name="countingComponent" />
         <ReduceTesting />
-      </div>
+      </StateProvider>
     )
   }
 }

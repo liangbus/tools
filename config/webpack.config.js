@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const devServerConfig = require('./webpack.dev.server.config');
 const mySimpleWebpackPlugin = require('../plugins/simplePlugin');
@@ -19,7 +20,12 @@ module.exports = {
     rules: [
       {
         test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        // use: ['style-loader', 'css-loader', 'sass-loader'],
+        // 避免页面混入过多样式文件
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: ["css-loader", "sass-loader"]
+        })
       },
       {
         test: /\.tsx?$/,
@@ -40,6 +46,8 @@ module.exports = {
     minimize: false
   },
   plugins: [
+    // 将脚本中引入的样式抽象出独立的样式文件
+    new ExtractTextPlugin("styles.css"),
     new webpack.HotModuleReplacementPlugin(),
     // 模板插件
     new HtmlWebpackPlugin({
