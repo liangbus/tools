@@ -22,6 +22,7 @@ module.exports = {
         test: /\.scss$/,
         // use: ['style-loader', 'css-loader', 'sass-loader'],
         // 避免页面混入过多样式文件
+        // 不使用 MiniCssExtractPlugin，样式会直接以 style 标签形式插入到 header 中去
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
@@ -77,8 +78,10 @@ module.exports = {
         removeAttributeQuotes: false // 改为false
       }
     }),
+    // 清空编译构建目录
     // 最新版本不需要传目标目录，自动读取 output 下的 path
     new CleanWebpackPlugin(),
+    // 个人 webpack 插件练习
     new mySimpleWebpackPlugin({
       context: this,
       that: 'That s String'

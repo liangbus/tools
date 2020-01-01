@@ -3,6 +3,7 @@ import { SimpleCounting } from './components/Button/SimpleCounting'
 import StateProvider from './components/serviceProvider/StateProvider/StateProvider'
 import Loading from './components/Loading/Loading'
 import { Clock } from './components/Clock/Clock'
+import Boxes from './components/Box/Boxes'
 import './sass/reset.scss';
 import './sass/App.scss'
 import throttle from '../utils/throttle'
@@ -19,8 +20,9 @@ export class App extends React.Component {
       <StateProvider>
         <Clock name="clockComponent" />
         <Loading />
-        <SimpleCounting name="countingComponent" />
-        <ReduceTesting />
+        <Boxes amount={500} />
+        {/* <SimpleCounting name="countingComponent" /> */}
+        {/* <ReduceTesting /> */}
       </StateProvider>
     )
   }
