@@ -1,16 +1,14 @@
 import React from 'react'
 import './columns.scss'
 interface Props {
-  data: {
-    columnsArr?: []
-  }
+  columnsArr?: number[]
 }
 interface State {
   
 }
 const COLOUMN_MAX_HEIGHT = 400 // 柱子最大值
 function ArrayColumns(props: Props) {
-  const { columnsArr = [] } = props.data
+  const { columnsArr = [] } = props
   const standard = getMaxValue(columnsArr)
   console.log('getMaxValue >>', standard)
   const columnsElem = columnsArr.map((v, i) => {
@@ -30,7 +28,7 @@ function ArrayColumns(props: Props) {
 }
 /**
  * 获取最大值
- * @param arr 
+ * @param arr
  */
 function getMaxValue(arr: number[]): number {
   const len = arr.length
