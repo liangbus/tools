@@ -1,23 +1,24 @@
 import React from 'react'
 import './columns.scss'
 interface Props {
-  columnsArr?: number[]
+  columnsArr?: number[];
+  highlightIndex?: number;
 }
 interface State {
   
 }
 const COLOUMN_MAX_HEIGHT = 400 // 柱子最大值
 function ArrayColumns(props: Props) {
-  const { columnsArr = [] } = props
+  const { columnsArr = [], highlightIndex = -1 } = props
   const standard = getMaxValue(columnsArr)
-  console.log('getMaxValue >>', standard)
+  // console.log('getMaxValue >>', standard)
   const columnsElem = columnsArr.map((v, i) => {
     const p = (v / standard) * 100
     const innerStyle = {
       height: p + '%'
     }
     return (
-      <div className="column-item" style={innerStyle} key={i}></div>
+      <div className={"column-item " + (highlightIndex === i ? 'current' : '')} style={innerStyle} key={i}></div>
     )
   })
   return (
