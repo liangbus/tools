@@ -5,13 +5,15 @@ interface Props {
 }
 interface State {
   isActiveloading: boolean
+  columnsArr: number[]
 }
 
 export default class StateProvider extends Component<Props, State> {
   constructor(props: Props) {
     super(props)
     this.state = {
-      isActiveloading: false
+      isActiveloading: false,
+      columnsArr: [5, 3, 8, 10, 2, 14, 23, 18, 16, 9, 8, 13, 7, 5, 11]
     }
   }
   /**

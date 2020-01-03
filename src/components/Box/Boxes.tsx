@@ -1,34 +1,47 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import ColorBox from './ColorBox'
 import './box.scss'
 import genSpecRadixNumber from '../../../utils/genSpecRadixNumber'
 
 interface Props {
   amount?: number // 生成 color box 的个数
+  innerText?: string
+  ref?: any
+}
+interface ElementArray {
+  
 }
 function Boxes(props: Props) {
-  const { amount = 50 } = props
-  const boxArr = []
-  let i = 0
+  const { amount = 50, innerText = "box", ref } = props
+  const boxesCmpRef = useRef(null);
+  // 仅会初始货执行一次
+  const [boxArr, setBoxArr] = useState<React.ReactElement[]>(() => {
+    console.log('Boxes useState init...')
+    return generateBoxes()
+  })
+  
   useEffect(() => {
     console.log('Boxes useEffect.')
-  }, [])
-  while (i++ < amount) {
-    // let rChar = '';
-    let rChar = (new Array(6).fill(1)).reduce((acc, cur) => {
-      return acc += genSpecRadixNumber(16)
-    }, '')
-    // console.log('rChar >>> ', rChar)
-    // const rc = Math.floor(Math.random() * 1000000)
-    boxArr.push(
-      <ColorBox color={`#${rChar}`} key={i} />
-    )
-  }
+  }, [boxArr])
+  
+  // 生成小盒子
   function generateBoxes() {
-
+    const boxes = []
+    let i = 0
+    while (i++ < amount) {
+      // let rChar = '';
+      let rChar = (new Array(6).fill(1)).reduce((acc, cur) => {
+        return acc += genSpecRadixNumber(16)
+      }, '')
+      // console.log('rChar >>> ', rChar)
+      boxes.push(
+        <ColorBox color={`#${rChar}`} key={i} innerText={innerText} />
+      )
+    }
+    return boxes
   }
   return (
-    <div className="boxes-wrapper">
+    <div className="boxes-wrapper" ref={boxesCmpRef} >
       {boxArr}
     </div>
   );

@@ -4,6 +4,7 @@ import StateProvider from './components/serviceProvider/StateProvider/StateProvi
 import Loading from './components/Loading/Loading'
 import { Clock } from './components/Clock/Clock'
 import Boxes from './components/Box/Boxes'
+import ArrayColumns from './components/ArrayColumns/ArrayColumns'
 import './sass/reset.scss';
 import './sass/App.scss'
 import throttle from '../utils/throttle'
@@ -16,13 +17,17 @@ export class App extends React.Component {
     });
   }
   render() {
+    const columnsArrData = {
+      columnsArr: []
+    }
     return (
       <StateProvider>
         <Clock name="clockComponent" />
         <Loading />
-        <Boxes amount={500} />
+        <Boxes amount={100} innerText="A" />
         {/* <SimpleCounting name="countingComponent" /> */}
         {/* <ReduceTesting /> */}
+        <ArrayColumns data={ {columnsArr: []} } />
       </StateProvider>
     )
   }

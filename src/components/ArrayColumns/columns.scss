@@ -1,0 +1,15 @@
+.columns-container{
+  width: 1000px;
+  height: 450px;
+  margin: 0 auto;
+  padding-top: 20px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: flex-end;
+  background-color: #f1f1f1;
+}
+.column-item {
+  width: 30px;
+  background-color: lightseagreen;
+}
