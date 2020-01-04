@@ -1,0 +1,14 @@
+.draggable-container{
+  width: 1000px;
+  height: 600px;
+  margin: 30px auto;
+  position: relative;
+  background-color: lightsteelblue;
+}
+.draggle-box{
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  cursor: move;
+  background-color: lightsalmon;
+}

@@ -1,9 +1,10 @@
 const path = require('path')
+const PORT = 9000
 /**
  * webpack-dev-server 配置项
  */
 module.exports = {
-  port: 9000,
+  port: PORT,
   index: 'index.html',
   proxy: {
     // proxy URLs to backend development server
@@ -14,5 +15,9 @@ module.exports = {
   historyApiFallback: true, // true for index.html upon 404, object for multiple paths
   hot: true, // hot module replacement. Depends on HotModuleReplacementPlugin
   https: false, // true for self-signed, object for cert authority
-  noInfo: true // only errors & warns on hot reload
+  noInfo: true, // only errors & warns on hot reload
+  after(app) {
+    // console.log('webpack success', app)
+    console.info(`webpack server running, see http://localhost:${PORT}/ `)
+  }
 }

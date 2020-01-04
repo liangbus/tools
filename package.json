@@ -10,7 +10,7 @@
     "build": "cross-env NODE_ENV=production webpack --config config/webpack.config.js",
     "build-dev": "cross-env NODE_ENV=development webpack --config config/webpack.config.js",
     "check-types": "tsc --watch",
-    "start": "cross-env NODE_ENV=development webpack-dev-server --config config/webpack.config.js"
+    "start": "cross-env NODE_ENV=development webpack-dev-server --config config/webpack.dev.conf.js"
   },
   "dependencies": {
     "@babel/cli": "^7.0.0",

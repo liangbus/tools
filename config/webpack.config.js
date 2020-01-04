@@ -6,7 +6,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const devServerConfig = require('./webpack.dev.server.config');
 const mySimpleWebpackPlugin = require('../plugins/simplePlugin');
 
-console.log('===== Envirement ====== ', process.env.NODE_ENV)
+console.log(`===== Envirement ====== [${process.env.NODE_ENV}]`)
 // console.log('---------devServerConfig--------\n', devServerConfig)
 
 /**
@@ -19,7 +19,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.scss$/,
+        test: /\.(sa|sc|c)ss$/,
         // use: ['style-loader', 'css-loader', 'sass-loader'],
         // 避免页面混入过多样式文件
         // 不使用 MiniCssExtractPlugin，样式会直接以 style 标签形式插入到 header 中去
@@ -27,7 +27,9 @@ module.exports = {
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
+              // doesn't work
               hmr: process.env.NODE_ENV === 'development',
+              reloadAll: true
             },
           },
           // style-loader conflict with MiniCssExtractPlugin https://github.com/webpack-contrib/mini-css-extract-plugin/issues/173

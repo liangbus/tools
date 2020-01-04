@@ -12,8 +12,9 @@ interface StepObj {
   completedIndex: number[] // 已完成下标
 }
 const QUICK_SORT_STEPS: StepObj[] = []
-let STEPS_LENGTH = 0
-let CUR_STEP_INDEX = 0
+let STEPS_LENGTH = 0 // 排序步骤数组长度
+let CUR_STEP_INDEX = 0 // 当前步骤 index
+const ANIMATION_SWITCH = false // 是否展示排序动画
 /**
  * 冒泡排序算法练习
  * @param arr 目标数组
@@ -46,6 +47,7 @@ function BublekSortView(props: Props) {
     return _index
   })
   const [ curColums, setCurColumns ] = useState(() => {
+    if(!ANIMATION_SWITCH) return columnsArr
     bubleSort(columnsArr)
     const steps = getSortSteps()
     // console.log('getQuickSortSteps >>> ', steps)
@@ -54,7 +56,7 @@ function BublekSortView(props: Props) {
   })
   useEffect(() => {
     const steps = getSortSteps()
-    if (CUR_STEP_INDEX < STEPS_LENGTH) {
+    if (ANIMATION_SWITCH && CUR_STEP_INDEX < STEPS_LENGTH) {
       setTimeout(() => {
         let stepObj = steps[CUR_STEP_INDEX++]
         // console.log('CUR_STEP_INDEX >>> ', CUR_STEP_INDEX)

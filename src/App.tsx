@@ -4,6 +4,7 @@ import StateProvider from './components/serviceProvider/StateProvider/StateProvi
 import Loading from './components/Loading/Loading'
 import { Clock } from './components/Clock/Clock'
 import Boxes from './components/Box/Boxes'
+import Container from './components/Draggable/Container'
 import BublekSortView from './components/SortView/BubleSortView'
 import './sass/reset.scss';
 import './sass/App.scss'
@@ -29,6 +30,7 @@ export class App extends React.Component {
         {/* <ReduceTesting /> */}
         {/* <ArrayColumns data={ {columnsArr: []} } /> */}
         <BublekSortView data={ {columnsArr: []} } />
+        <Container />
       </StateProvider>
     )
   }
