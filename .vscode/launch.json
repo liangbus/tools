@@ -5,10 +5,20 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "type": "node",
-      "request": "launch",
-      "name": "Launch Program",
-      "program": "${/src/App.tsx}"
+      "type": "chrome",
+      "request": "attach",
+      "name": "Attach to Chrome",
+      // "protocol": "inspector",
+      "port": 9001,
+      "webRoot": "${workspaceFolder}/src",
+      "url": "http://localhost:9002/#/",
+      "skipFiles": [
+        "node_modules/**"
+      ],
+      "sourceMaps": true,
+      "sourceMapPathOverrides": {
+        "webpack:///src/*": "${webRoot}/*"
+      }
     }
   ]
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { setChildrenProps, funcsBindWith } from '../../../../utils/util'
+import { generateRandomArray } from '../../../../utils/generateRandomArray'
 interface Props {
   
 }
@@ -13,7 +14,7 @@ export default class StateProvider extends Component<Props, State> {
     super(props)
     this.state = {
       isActiveloading: false,
-      columnsArr: [5, 3, 8, 10, 2, 14, 23, 18, 16, 9, 8, 13, 7, 5, 11]
+      columnsArr: generateRandomArray(20)
     }
   }
   /**

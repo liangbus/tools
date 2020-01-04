@@ -15,7 +15,7 @@ console.log('===== Envirement ====== ', process.env.NODE_ENV)
  */
 module.exports = {
   entry: './src/index.tsx',
-  devtool: 'inline-source-map',
+  devtool: 'eval-source-map',
   module: {
     rules: [
       {
@@ -82,10 +82,10 @@ module.exports = {
     // 最新版本不需要传目标目录，自动读取 output 下的 path
     new CleanWebpackPlugin(),
     // 个人 webpack 插件练习
-    new mySimpleWebpackPlugin({
-      context: this,
-      that: 'That s String'
-    })
+    // new mySimpleWebpackPlugin({
+    //   context: this,
+    //   that: 'That s String'
+    // })
   ],
   devServer: devServerConfig
 };
