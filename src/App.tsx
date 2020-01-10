@@ -6,6 +6,7 @@ import { Clock } from './components/Clock/Clock'
 import Boxes from './components/Box/Boxes'
 import Container from './components/Draggable/Container'
 import BublekSortView from './components/SortView/BubleSortView'
+import AnimationTest from './components/AnimationTest/AnimationTest'
 import './sass/reset.scss';
 import './sass/App.scss'
 import throttle from '../utils/throttle'
@@ -26,11 +27,21 @@ export class App extends React.Component {
         <Clock name="clockComponent" />
         <Loading />
         <Boxes amount={100} innerText="A" />
-        {/* <SimpleCounting name="countingComponent" /> */}
-        {/* <ReduceTesting /> */}
-        {/* <ArrayColumns data={ {columnsArr: []} } /> */}
-        <BublekSortView data={ {columnsArr: []} } />
-        <Container />
+        {/* 
+          <SimpleCounting name="countingComponent" /> 
+        */}
+        {/* 
+          <ReduceTesting /> 
+        */}
+        {/*
+          // 冒泡排序展示
+          <BublekSortView data={ {columnsArr: []} } />
+        */}
+        {/*
+          拖动 box
+          <Container />
+        */}
+        <AnimationTest />
       </StateProvider>
     )
   }
