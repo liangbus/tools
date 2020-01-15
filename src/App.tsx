@@ -19,9 +19,6 @@ export class App extends React.Component {
     });
   }
   render() {
-    const columnsArrData = {
-      columnsArr: []
-    }
     return (
       <StateProvider>
         <Clock name="clockComponent" />
@@ -33,10 +30,10 @@ export class App extends React.Component {
         {/* 
           <ReduceTesting /> 
         */}
-        {/*
-          // 冒泡排序展示
+        
+          {/* // 冒泡排序展示 */}
           <BublekSortView data={ {columnsArr: []} } />
-        */}
+       
         {/*
           拖动 box
           <Container />
@@ -46,12 +43,15 @@ export class App extends React.Component {
     )
   }
 }
+window.onerror = function(error) {
+  console.log('=========window.onerror=========', error)
+}
 // 监听页面滚动
 document.onscroll = throttle(() => {
   console.log(`scroll 事件执行 -> ${new Date().getTime()}`)
 }, 800, this)
 document.addEventListener('DOMContentLoaded', function() {
-  console.log('on document domContentLoaded event !!')
+  console.log('on document DOMContentLoaded !!')
 })
 window.addEventListener('load', function() {
   console.log('on window load event !!')

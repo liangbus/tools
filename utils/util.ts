@@ -30,3 +30,18 @@ export function sleep(t: number): void {
     now = new Date().getTime()
   }
 }
+
+/**
+ * 检查是否支持 link 标签预加载机制
+ * @returns boolean
+ */
+export function isPreloadSupported(): Boolean {
+  const linkTag = document.createElement('link')
+  const relList = linkTag.relList
+
+  if(!relList || !relList.supports) {
+    return false
+  }
+
+  return relList.supports('preload')
+}

@@ -1,6 +1,6 @@
 .animation-field{
   width: 95%;
-  height: 400px;
+  min-height: 400px;
   display: flex;
   margin: 0 auto;
   flex-flow: column;
@@ -12,6 +12,7 @@
   width: 100%;
   height: 300px;
   display: flex;
+  flex-flow: row wrap;
   justify-content: space-around;
   align-items: center;
   position: relative;
@@ -34,6 +35,18 @@
   position: relative;
   @include box(#0f5d75);
 }
+.box5 {
+  @include box(#9d6eb3);
+  border-radius: 50%;
+}
+.box6 {
+  @include box(#e75076);
+  transition: all .5s ease-in-out;
+}
+.box6:hover {
+  width: 300px;
+  height: 300px;
+}
 .box1.anim {
   animation: animation1 2s linear infinite;
 }
@@ -45,6 +58,9 @@
 }
 .box4.anim {
   animation: animation4 1s ease-in-out infinite;
+}
+.box5.anim {
+  animation: animation5 1s ease-in-out infinite;
 }
 
 @keyframes animation1 {
@@ -111,5 +127,19 @@
   100% {
     left: 0px;
     top: 0px;
+  }
+}
+@keyframes animation5 {
+  0% {
+    transform: scale(1);
+  }
+  33%{
+    transform: scale(1.5);;
+  }
+  66%{
+    transform: scale(.9);;
+  }
+  100% {
+    transform: scale(1);;
   }
 }

@@ -8,6 +8,7 @@ function AnimationTest() {
     state: 1,
     desc: 'Need a sleep?'
   })
+  // throw new Error('something wrong!')
   function doSleep() {
     console.log('start to sleep~')
     if(!buttonState.state) return
@@ -32,6 +33,8 @@ function AnimationTest() {
         <div className={'box box2 ' + (animationSwitch ? ' anim' : ' ')}></div>
         <div className={'box box3 ' + (animationSwitch ? ' anim' : ' ')}></div>
         <div className={'box box4' + (animationSwitch ? ' anim' : ' ')}></div>
+        <div className={'box box5' + (animationSwitch ? ' anim' : ' ')}></div>
+        <div className={'box box6' + (animationSwitch ? ' anim' : ' ')}></div>
       </div>
       <div className="operate-field">
         <button className="animation-switch" onClick={() => {setAnimationSwithc(!animationSwitch)}}>Animation switch</button>

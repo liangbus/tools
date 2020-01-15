@@ -14,7 +14,7 @@ export default class StateProvider extends Component<Props, State> {
     super(props)
     this.state = {
       isActiveloading: false,
-      columnsArr: generateRandomArray(20)
+      columnsArr: generateRandomArray(15)
     }
   }
   /**

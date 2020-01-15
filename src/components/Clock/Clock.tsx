@@ -11,6 +11,8 @@ interface ClockState {
 class Clock extends React.Component<ClockProps, ClockState> {
   constructor(props: {}){
     super(props)
+    // console.log('this.props >>> ', this.props) // super 中要传入 props 才可以使用 this.props
+    // console.log('props >>> ', props)
     this.state = {
       hour: '00',
       min: '00',
