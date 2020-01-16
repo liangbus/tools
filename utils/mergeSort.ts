@@ -19,8 +19,8 @@ export default function mergeSort(arr: number[]) {
 
 function merge(left: number[], right: number[]) {
   const merged = []
-  while(left.length && right.length) {
-    if(left[0] > right[0]) {
+  while(left.length && right.length) { // 这里须实时获取 left, right 长度
+    if(left[0] > right[0]) { // 总是比较最前面的元素值，因为后面会 shift()
       merged.push(right.shift())
     } else {
       merged.push(left.shift())

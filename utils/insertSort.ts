@@ -18,4 +18,5 @@ export default function insertSort(arr: number[]) {
     // insert （此处 preIndex+1 即最本轮对比数插入的位置，因为最后减减了，所以要加 1）
     arr[preIndex + 1] = current
   }
+  return arr
 }

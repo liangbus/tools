@@ -8,7 +8,7 @@ function aNew(){
   // 执行构造函数
   var result = constructor.apply(context, args);
   // 如果返回结果是对象，就直接返回，否则返回 context 对象
-  return (typeof result === 'object' && result != null) ? result : context;
+  return (typeof result === 'object' && result !== null) ? result : context;
 }
 
 export {

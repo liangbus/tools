@@ -25,14 +25,17 @@ const bubleSort = function(arr: number[]): Array<number> {
   if (!len) return []
   const completed = []
   for(let i = 0; i < len - 1; i++) {
+    // let isSwap = false
     for(let j = 0; j < len - 1 - i; j++) {
       if (_arr[j] > _arr[j+1]) {
         [_arr[j], _arr[j+1]] = [_arr[j+1], _arr[j]];
+        // isSwap = true
       }
       // 传参时创建新数组
       setSortSteps([..._arr], j + 1, [...completed])
     }
     completed.push(len - 1 - i)
+    // if(!isSwap) break
   }
   setSortSteps([..._arr], len - 1, [...completed, 0]) // 设置冒泡最后一次排序步骤
   return _arr

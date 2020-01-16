@@ -1,3 +1,7 @@
+/**
+ * 快速排序
+ * @param arr 
+ */
 const quickSort = function(arr: number[]): number[]{
   if (!arr.length) return [];
   const pivotKey = Math.floor(arr.length/2);
