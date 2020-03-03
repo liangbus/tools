@@ -15,7 +15,7 @@ console.log(`===== Envirement ====== [${process.env.NODE_ENV}]`)
  */
 module.exports = {
   entry: './src/index.tsx',
-  devtool: 'eval-source-map',
+  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -59,7 +59,7 @@ module.exports = {
   },
   optimization: {
     // 打包压缩配置
-    minimize: false
+    minimize: true
   },
   plugins: [
     // 将脚本中引入的样式抽象出独立的样式文件

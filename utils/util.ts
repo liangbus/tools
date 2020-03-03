@@ -54,3 +54,22 @@ export function checkIsIpAddr(ip: string): boolean {
   const pattern = /^((2(5[0-5]|[0-4]\d))|[0-1]?\d{1,2})(\.((2(5[0-5]|[0-4]\d))|[0-1]?\d{1,2})){3}$/gm
   return pattern.test(ip)
 }
+
+/**
+ * 检测是否为 NaN
+ * 利用 NaN 唯一的不等于自身的特性
+ * @param n
+ */
+export function checkIsNaN(n: any) {
+  return n !== n
+}
+
+/**
+ * Date.now polyfill
+ */
+export function getNowStamp() {
+  if(!Date.now) {
+    Date.now = () => +new Date()
+  }
+  return Date.now()
+}
