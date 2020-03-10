@@ -3,6 +3,7 @@ import { SimpleCounting } from './components/Button/SimpleCounting'
 import StateProvider from './components/serviceProvider/StateProvider/StateProvider'
 import Loading from './components/Loading/Loading'
 import { Clock } from './components/Clock/Clock'
+import MechanicalClock from './components/Clock/MechanicalClock'
 import Boxes from './components/Box/Boxes'
 import Container from './components/Draggable/Container'
 import BublekSortView from './components/SortView/BubleSortView'
@@ -11,6 +12,13 @@ import './sass/reset.scss';
 import './sass/App.scss'
 import throttle from '../utils/throttle'
 import { ReduceTesting } from './components/ReduceTesting/ReduceTesting'
+import { funcPerfomanceTest } from '../utils/util'
+import { fibonanceSequence, fibonanceSequenceInRecursive, fibonanceSequenceInRecursiveDp } from '../utils/fibonacciSequence'
+
+// fibonanceSequence test
+// funcPerfomanceTest(fibonanceSequence, window, [30])
+// funcPerfomanceTest(fibonanceSequenceInRecursiveDp, window, [45])
+// funcPerfomanceTest(fibonanceSequenceInRecursive, window, [45])
 
 export class App extends React.Component {
   componentDidMount() {
@@ -22,6 +30,7 @@ export class App extends React.Component {
     return (
       <StateProvider>
         <Clock name="clockComponent" />
+        <MechanicalClock />
         <Loading />
         <Boxes amount={100} innerText="A" />
         {/* 
@@ -31,8 +40,8 @@ export class App extends React.Component {
           <ReduceTesting /> 
         */}
         
-          {/* // 冒泡排序展示 */}
-          <BublekSortView data={ {columnsArr: []} } />
+        {/* // 冒泡排序展示 */}
+        <BublekSortView data={ {columnsArr: []} } />
        
         {/*
           拖动 box

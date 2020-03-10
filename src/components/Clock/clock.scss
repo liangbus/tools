@@ -24,3 +24,91 @@
     padding: 20px 0px;
   }
 }
+.merchani-clock-container{
+  margin: 50px 0;
+  .clock-border-field{
+    width: 250px;
+    height: 250px;
+    margin: 0 auto;
+    padding: 5px;
+    border-radius: 50%;
+    background-color: #000;
+  }
+  .clock-inner-field{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 100%;
+    background-color: #fff;
+  }
+  .center-dot{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(189, 41, 41);
+    z-index: 99;
+  }
+  .hour-pointer{
+    width: 4px;
+    height: 80px;
+    position: absolute;
+    left: 50%;
+    top: 45px;
+    transition: transform .3s linear;
+    transform: translate(-50%, 0) rotate(0deg);
+    transform-origin: bottom center;
+    background-color: rgb(18, 52, 145);
+  }
+  .minute-pointer{
+    width: 4px;
+    height: 90px;
+    position: absolute;
+    left: 50%;
+    top: 35px;
+    transition: transform .3s linear;
+    transform: translate(-50%, 0) rotate(0deg);
+    transform-origin: bottom center;
+    background-color: rgb(24, 78, 141);
+  }
+  .second-pointer{
+    width: 2px;
+    height: 100px;
+    position: absolute;
+    left: 50%;
+    top: 25px;
+    // transition: transform .05s linear;
+    transform: translate(-50%, 0) rotate(45deg);
+    transform-origin: bottom center;
+    background-color: rgb(172, 37, 37);
+  }
+  .clock-number{
+    font-size: 24px;
+    line-height: 24px;
+    position: absolute;
+    text-align: center;
+  }
+  .number-twelve{
+    top: 5px;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+  .number-three{
+    top: 50%;
+    right: 5px;
+    transform: translate(0, -50%);
+  }
+  .number-six{
+    bottom: 5px;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+  .number-nine{
+    top: 50%;
+    left: 5px;
+    transform: translate(0, -50%);
+  }
+}

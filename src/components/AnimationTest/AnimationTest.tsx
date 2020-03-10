@@ -17,13 +17,13 @@ function AnimationTest() {
       desc: 'Sleeping'
     })
     setTimeout(() => {
-      sleep(5)
       setButtonState({
         state: 1,
         desc: 'Need a sleep?'
       })
+      sleep(5)
       console.log('waked up~')
-    }, 0)
+    }, 100)
     
   }
   return (

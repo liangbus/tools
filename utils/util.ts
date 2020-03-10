@@ -73,3 +73,38 @@ export function getNowStamp() {
   }
   return Date.now()
 }
+
+/**
+ * 强制异步执行指定函数
+ * @param fn 目标执行函数
+ */
+export function asyncify(fn: any) {
+  const originalFn = fn
+  let timer: any = setTimeout(() => {
+    timer = null
+    fn && fn()
+  }, 0)
+  fn = null
+  return function(this: void) {
+    if (timer) {
+      fn = originalFn.bind.apply(
+        originalFn,
+        [this].concat([].slice.call(arguments))
+        )
+    } else {
+      originalFn.apply(this, arguments)
+    }
+  }
+}
+/**
+ * 函数执行时间测试
+ * @param func 
+ * @param context 
+ * @param args 
+ */
+export function funcPerfomanceTest(func: Function, context = window, args: any[]) {
+  const t1 = Date.now()
+  const res = func.apply(context, args)
+  const t2 = Date.now()
+  console.log(`funcPerfomanceTest: ${func.name} cost ${t2 - t1}ms, and result is `, res)
+}
