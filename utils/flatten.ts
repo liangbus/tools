@@ -36,11 +36,11 @@ const arrayFlattening = (arr: any[]): any[] => {
   const stack = [...arr];
   const res = [];
   while(stack.length) {
-    const next = stack.pop();
-    if (Array.isArray(next)) {
-      stack.push(...next);
+    const head = stack.shift();
+    if (Array.isArray(head)) {
+      stack.unshift(...head);
     } else {
-      res.push(next);
+      res.push(head);
     }
   }
   return res.reverse();
@@ -58,6 +58,14 @@ const awesomeFlatten = (arr: any[]) => {
     arr = [].concat(...arr)
   }
   return arr
+}
+
+/**
+ * 针对数字类型数组，可以通过 join 和 split 方法即可完成
+ * @param arr
+ */
+const numbersFlattening = (arr: number[]): number[] => {
+  return arr.join(',').split(',').map(num => Number(num))
 }
 
 export {

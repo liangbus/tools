@@ -14,11 +14,16 @@ import throttle from '../utils/throttle'
 import { ReduceTesting } from './components/ReduceTesting/ReduceTesting'
 import { funcPerfomanceTest } from '../utils/util'
 import { fibonanceSequence, fibonanceSequenceInRecursive, fibonanceSequenceInRecursiveDp } from '../utils/fibonacciSequence'
+import { ReactEventHandler } from 'react'
 
 // fibonanceSequence test
 // funcPerfomanceTest(fibonanceSequence, window, [30])
 // funcPerfomanceTest(fibonanceSequenceInRecursiveDp, window, [45])
 // funcPerfomanceTest(fibonanceSequenceInRecursive, window, [45])
+
+interface IProps {
+  imgError : ReactEventHandler<HTMLDivElement>,
+}
 
 export class App extends React.Component {
   componentDidMount() {
@@ -26,12 +31,22 @@ export class App extends React.Component {
       console.log('on document load event !!')
     });
   }
+  // xss-test
+  // imgError(): void {
+  //   alert(1111)
+  // }
   render() {
+    setTimeout(() => {
+      throw new Error('wrong!')
+    }, 2000)
     return (
       <StateProvider>
         <Clock name="clockComponent" />
         <MechanicalClock />
         <Loading />
+        <div className="xss-test">
+          <a href="JaVaScript:alert('xss')">奖品送不停</a>
+        </div>
         <Boxes amount={100} innerText="A" />
         {/* 
           <SimpleCounting name="countingComponent" /> 
@@ -48,6 +63,7 @@ export class App extends React.Component {
           <Container />
         */}
         <AnimationTest />
+        {/* <img src="abcd" alt=""/> */}
       </StateProvider>
     )
   }
@@ -63,5 +79,13 @@ document.addEventListener('DOMContentLoaded', function() {
   console.log('on document DOMContentLoaded !!')
 })
 window.addEventListener('load', function() {
-  console.log('on window load event !!')
+  console.log('on window LOAD EVENT !!')
+})
+// 全局捕获 error 事件
+window.addEventListener('error', err => {
+  console.error('caught ERROR in eventListener > ', err)
+}, true)
+// 全局捕获【未捕获】的 Promise 异常/拒绝事件
+window.addEventListener('unhandledrejection', err => {
+  console.error('caught unhandledrejection >>> ', err)
 })

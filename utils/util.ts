@@ -96,6 +96,21 @@ export function asyncify(fn: any) {
     }
   }
 }
+// export function promisory(fn: Function) {
+//   return function() {
+//     const args = [].slice.call(arguments)
+//     return new Promise((resolve, reject) => {
+//       fn.apply(null,
+//         args.concat(
+//           function (err:any, res: any) {
+//             if(err) reject(err)
+//             else resolve(res)
+//           }
+//         )  
+//       )
+//     })
+//   }
+// }
 /**
  * 函数执行时间测试
  * @param func 

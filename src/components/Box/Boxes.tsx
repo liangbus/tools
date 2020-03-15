@@ -19,7 +19,16 @@ function Boxes(props: Props) {
     console.log('Boxes useState init...')
     return generateBoxes()
   })
-  
+  // 测试全局未捕获的 promise 异常
+  // Promise.reject('NO WAY !!!').catch(err => {
+  //   console.warn('after rejection caught >> ', err)
+  // }).then(
+  //   () => {
+  //     throw new Error('what hanppened ????')
+  //   },
+  //   err => {
+  //     console.log('something wrong ~~~ ', err)
+  //   })
   useEffect(() => {
     console.log('Boxes useEffect.')
   }, [boxArr])

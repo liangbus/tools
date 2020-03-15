@@ -11,10 +11,6 @@ const fibonanceSequence = (n: number): number => {
   return arr[arr.length-1]
 }
 
-const fibonanceSequenceDp = (n: number): number => {
-  return 0
-}
-
 /**
  * 斐波那契序列，递归式
  * @param n

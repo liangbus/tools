@@ -37,14 +37,17 @@ function useClockPointer(dependencies: []) {
   const d = new Date()
   // console.log('d -> ', d)
   let sec = d.getSeconds()
+  let min = d.getMinutes()
+  let h = d.getHours()
   useEffect(() => {
     // console.log('useClockPointer hook: current sec -> ', sec)
     setTimeout(() => {
     sec = sec === 60 ? -1 : sec
+
     // console.log('++sec * degreeUnit -> ', (sec + 1) * degreeUnit)
     setSecPointerDeg(++sec * DEGREE_UNIT)
-    setHourPointerDeg(transformHoursFormat(d.getHours()) * DEGREE_UNIT * 5)
-    setMinPointerDeg(d.getMinutes() * DEGREE_UNIT)
+    setHourPointerDeg(transformHoursFormat(h) * DEGREE_UNIT * 5 + (min/60) * 30)
+    setMinPointerDeg(min * DEGREE_UNIT)
   }, 1000)
   }, [secPointerDeg, minPointerDeg, hourPointerDeg])
   return [hourPointerDeg, minPointerDeg, secPointerDeg]
