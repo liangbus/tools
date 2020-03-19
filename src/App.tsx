@@ -21,9 +21,6 @@ import { ReactEventHandler } from 'react'
 // funcPerfomanceTest(fibonanceSequenceInRecursiveDp, window, [45])
 // funcPerfomanceTest(fibonanceSequenceInRecursive, window, [45])
 
-interface IProps {
-  imgError : ReactEventHandler<HTMLDivElement>,
-}
 
 export class App extends React.Component {
   componentDidMount() {
@@ -36,9 +33,9 @@ export class App extends React.Component {
   //   alert(1111)
   // }
   render() {
-    setTimeout(() => {
-      throw new Error('wrong!')
-    }, 2000)
+    // setTimeout(() => {
+    //   throw new Error('wrong!')
+    // }, 2000)
     return (
       <StateProvider>
         <Clock name="clockComponent" />
@@ -48,12 +45,12 @@ export class App extends React.Component {
           <a href="JaVaScript:alert('xss')">奖品送不停</a>
         </div>
         <Boxes amount={100} innerText="A" />
-        {/* 
+        
           <SimpleCounting name="countingComponent" /> 
-        */}
-        {/* 
+       
+        
           <ReduceTesting /> 
-        */}
+       
         
         {/* // 冒泡排序展示 */}
         <BublekSortView data={ {columnsArr: []} } />
@@ -63,7 +60,6 @@ export class App extends React.Component {
           <Container />
         */}
         <AnimationTest />
-        {/* <img src="abcd" alt=""/> */}
       </StateProvider>
     )
   }
@@ -82,10 +78,10 @@ window.addEventListener('load', function() {
   console.log('on window LOAD EVENT !!')
 })
 // 全局捕获 error 事件
-window.addEventListener('error', err => {
-  console.error('caught ERROR in eventListener > ', err)
-}, true)
-// 全局捕获【未捕获】的 Promise 异常/拒绝事件
-window.addEventListener('unhandledrejection', err => {
-  console.error('caught unhandledrejection >>> ', err)
-})
+// window.addEventListener('error', err => {
+//   console.error('caught ERROR in eventListener > ', err)
+// }, true)
+// // 全局捕获【未捕获】的 Promise 异常/拒绝事件
+// window.addEventListener('unhandledrejection', err => {
+//   console.error('caught unhandledrejection >>> ', err)
+// })

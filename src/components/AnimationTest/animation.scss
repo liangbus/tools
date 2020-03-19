@@ -43,6 +43,10 @@
   @include box(#e75076);
   transition: all .5s ease-in-out;
 }
+.box7{
+  @include box(#02c99e);
+  border-radius: 25%;
+}
 .box6:hover {
   width: 300px;
   height: 300px;
@@ -61,6 +65,10 @@
 }
 .box5.anim {
   animation: animation5 1s ease-in-out infinite;
+}
+.box7.anim {
+  transform: translate(-150px, -50px);
+  transition: transform 5s linear;
 }
 
 @keyframes animation1 {

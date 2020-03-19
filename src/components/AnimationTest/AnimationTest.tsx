@@ -35,6 +35,7 @@ function AnimationTest() {
         <div className={'box box4' + (animationSwitch ? ' anim' : ' ')}></div>
         <div className={'box box5' + (animationSwitch ? ' anim' : ' ')}></div>
         <div className={'box box6' + (animationSwitch ? ' anim' : ' ')}></div>
+        <div className={'box box7' + (animationSwitch ? ' anim' : ' ')}></div>
       </div>
       <div className="operate-field">
         <button className="animation-switch" onClick={() => {setAnimationSwithc(!animationSwitch)}}>Animation switch</button>
