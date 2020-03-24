@@ -71,5 +71,6 @@ const numbersFlattening = (arr: number[]): number[] => {
 export {
   recursiveFlattening,
   arrayFlattening,
-  awesomeFlatten
+  awesomeFlatten,
+  numbersFlattening
 }
