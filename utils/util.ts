@@ -124,12 +124,3 @@ export function funcPerfomanceTest(func: Function, context = window, args: any[]
   console.log(`funcPerfomanceTest: ${func.name} cost ${t2 - t1}ms, and result is `, res)
 }
 
-/**
- * 求两数的最大公约数
- * @param a num1
- * @param b num2
- */
-export function gcd(a: number, b: number): number {
-  if (b === 0) return a
-  return gcd(b, a % b)
-}

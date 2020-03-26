@@ -1,5 +1,5 @@
 /**
- * 获取一个字符串里面最长的子串长度
+ * 无重复字符的最长子串
  * @param str
  */
 function lengthOfLongestSubstring(str: string = ''): number {
