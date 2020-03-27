@@ -19,6 +19,30 @@ export function isObject(target: any) {
   return target !== null && (t === 'object' || t === 'function')
 }
 
+// 随机不重复数组（排序后是连续的）
+export function generateRandomArray (len: number): Array<number>{
+  let i = 0;
+	const arr = []
+	while(i++ < len) {
+		arr.push(i)
+	}
+	return arr.sort(() => 0.5 - Math.random())
+}
+
+/**
+ * 打乱数组顺序
+ * @param arr
+ */
+export function shuffleArray(arr: number[]): number[] {
+  let i = arr.length;
+  while(i) {
+    let r = Math.floor(Math.random() * i);
+    [arr[i - 1], arr[r]] = [arr[r], arr[i - 1]]
+    i--
+  }
+  return arr
+}
+
 /**
  * 阻塞线程
  * @param t 时间，单位：秒
