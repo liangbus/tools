@@ -148,3 +148,14 @@ export function funcPerfomanceTest(func: Function, context = window, args: any[]
   console.log(`funcPerfomanceTest: ${func.name} cost ${t2 - t1}ms, and result is `, res)
 }
 
+export function generateRandomString(len: number): string {
+  const chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678_$%#@^'
+  const charsCount = chars.length
+  let str = ''
+  let i = 0;
+  while(i++ < len) {
+    const r = Math.floor(Math.random() * charsCount)
+    str += chars.charAt(r)
+  }
+  return str
+}
