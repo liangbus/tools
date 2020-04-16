@@ -13,7 +13,9 @@ const devServerConfig = require('./webpack.dev.server.config');
  * 所以就会有诸如 webpack.base.conf.js, webpack.dev.conf.js, webpack.prod.conf.js 这类文件，这些文件名字都是自定义的
  */
 const baseConfig = {
-  entry: './src/index.tsx',
+  entry: {
+    bundle: './src/index.tsx'
+  },
   devtool: 'eval-source-map',
   module: {
     rules: [
@@ -38,7 +40,7 @@ const baseConfig = {
     extensions: [ '.tsx', '.ts', '.js' ]
   },
   output: {
-    filename: 'app.js',
+    filename: '[name].js',
     path: path.resolve('.', 'dist') // . 是指当前的工作目录，__dirname 是当前的文件路径
   },
   optimization: {

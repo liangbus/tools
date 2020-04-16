@@ -46,19 +46,19 @@ export class App extends React.Component {
         </div>
         <Boxes amount={100} innerText="A" />
         
-          <SimpleCounting name="countingComponent" /> 
+        <SimpleCounting name="countingComponent" /> 
        
         
-          <ReduceTesting /> 
+        <ReduceTesting /> 
        
         
         {/* // 冒泡排序展示 */}
         <BublekSortView data={ {columnsArr: []} } />
        
-        {/*
-          拖动 box
-          <Container />
-        */}
+        
+        {/* 拖动 box */}
+        {/* <Container /> */}
+       
         <AnimationTest />
       </StateProvider>
     )

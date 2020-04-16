@@ -9,6 +9,7 @@ console.log('===== Envirement ====== ', process.env.NODE_ENV)
 const webpackDevConfig = {
   ...baseConfig,
   ...{
+    mode: 'development',
     optimization: {
       // 打包压缩配置
       minimize: false

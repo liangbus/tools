@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { setChildrenProps, funcsBindWith } from '../../../../utils/util'
-import { generateRandomArray } from '../../../../utils/generateRandomArray'
+import { generateRandomArray } from '../../../../utils/util'
 interface Props {
   
 }

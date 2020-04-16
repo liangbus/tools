@@ -14,7 +14,7 @@ interface StepObj {
 const QUICK_SORT_STEPS: StepObj[] = []
 let STEPS_LENGTH = 0 // 排序步骤数组长度
 let CUR_STEP_INDEX = 0 // 当前步骤 index
-const ANIMATION_SWITCH = true // 是否展示排序动画
+const ANIMATION_SWITCH = false // 是否展示排序动画
 /**
  * 冒泡排序算法练习
  * @param arr 目标数组

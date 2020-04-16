@@ -159,3 +159,32 @@ export function generateRandomString(len: number): string {
   }
   return str
 }
+
+/**
+ * 数字金额转换成千分制（不带小数）
+ * @param n 
+ */
+export function tranferMoneyFormat(n: number) {
+  let num = n.toString()
+  const len = num.length
+  if(len <= 3) return num
+  let i = len - 3
+  let res = ''
+  while(i >= 0) {
+    res = ',' + num.substring(i, i + 3) + res
+    i = i - 3
+  }
+  res = num.substring(0, i + 3) + res
+  return res.startsWith(',') ? res.substring(1) : res
+}
+
+/**
+ * 数字和字母映射表，通过数字生成字母
+ * 0 -> A
+ * 1 -> B 
+ * ...
+ * 25 -> Z
+ */
+export function generateLetter(number = 0) {
+  return String.fromCharCode(number + 65)
+}

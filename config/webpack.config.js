@@ -14,7 +14,10 @@ console.log(`===== Envirement ====== [${process.env.NODE_ENV}]`)
  * 所以就会有诸如 webpack.base.conf.js, webpack.dev.conf.js, webpack.prod.conf.js 这类文件，这些文件名字都是自定义的
  */
 module.exports = {
-  entry: './src/index.tsx',
+  mode: "production",
+  entry: {
+    app: './src/index.tsx'
+  },
   devtool: 'source-map',
   module: {
     rules: [
@@ -62,6 +65,13 @@ module.exports = {
     minimize: true
   },
   plugins: [
+    // 动态连接库，将一些外部库【不打包】进业务代码，成独立代码，可以放 CDN 缓存
+    new webpack.DllReferencePlugin({
+      context: __dirname,
+      manifest: require(
+        path.join(__dirname, '../dist/dll/react.manifest.json')
+      )
+    }),
     // 将脚本中引入的样式抽象出独立的样式文件
     // new ExtractTextPlugin("styles.css"),
     new MiniCssExtractPlugin({
@@ -82,14 +92,15 @@ module.exports = {
     }),
     // 清空编译构建目录
     // 最新版本不需要传目标目录，自动读取 output 下的 path
-    new CleanWebpackPlugin(),
+    // new CleanWebpackPlugin(),
     // 个人 webpack 插件练习
     // new mySimpleWebpackPlugin({
     //   context: this,
     //   that: 'That s String'
     // })
+    
   ],
   devServer: devServerConfig
 };
 
-console.info(`webpack server running, see http://localhost:${devServerConfig.port}/ `)
+// console.info(`webpack server running, see http://localhost:${devServerConfig.port}/ `)

@@ -9,7 +9,7 @@ const myPow = function(x: number, n: number): number {
 };
 function powHelper(x: number, n: number): number{
   if (n === 0) return 1
-  return n % 2 !== 0 ? powHelper(x*x, (n -1) /2) * x : powHelper(x*x, n/2)
+  return n % 2 !== 0 ? powHelper(x*x, (n - 1) / 2) * x : powHelper(x*x, n/2)
 }
 
 /**
