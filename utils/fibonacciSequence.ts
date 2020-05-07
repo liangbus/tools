@@ -22,12 +22,25 @@ const fibonanceSequenceInRecursive = (n: number): number => {
     return fibonanceSequenceInRecursive(n - 2) + fibonanceSequenceInRecursive(n -1)
   }
 }
+/**
+ * 斐波那契序列，尾递归版本
+ * @param n 
+ * @param prevSum1 最初值1
+ * @param prevSum2 最初值1
+ */
+const fibonanceSequenceInRecursiveV2 = (n: number, prevSum1: number = 1, prevSum2: number = 1): number => {
+  if (n <= 1) {
+    return prevSum1
+  } else {
+    return fibonanceSequenceInRecursiveV2(n - 1, prevSum2, prevSum1 + prevSum2)
+  }
+}
 
 /**
  * 斐波那契序列，递归式 + 动态规划版
  * @param n
  */
- const fibonanceSequenceInRecursiveDp = (n: number): number => {
+const fibonanceSequenceInRecursiveDp = (n: number): number => {
   if (n < 1)  return 0
   let dpTable = [0, 1, 1]
   return fibnanceDpHelper(dpTable, n)

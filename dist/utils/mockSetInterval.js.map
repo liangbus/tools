@@ -1,0 +1,1 @@
+{"version":3,"file":"mockSetInterval.js","sourceRoot":"","sources":["../../utils/mockSetInterval.ts"],"names":[],"mappings":"AAAA,IAAM,eAAe,GAAG,UAAC,IAAc,EAAE,QAAgB;IACvD,SAAS,QAAQ;QACf,UAAU,CAAC,QAAQ,EAAE,QAAQ,CAAC,CAAA;QAC9B,IAAI,EAAE,CAAC;IACT,CAAC;IACD,UAAU,CAAC,QAAQ,EAAE,QAAQ,CAAC,CAAC;AACjC,CAAC,CAAA;AAED,OAAO,EACL,eAAe,EAChB,CAAA"}

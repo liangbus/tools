@@ -185,6 +185,6 @@ export function tranferMoneyFormat(n: number) {
  * ...
  * 25 -> Z
  */
-export function generateLetter(number = 0) {
+export function generateLetter(number: number = 0): string {
   return String.fromCharCode(number + 65)
 }

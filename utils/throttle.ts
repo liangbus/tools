@@ -15,4 +15,17 @@ const throttle = (fn: Function, delay: number, context: Object): any => {
   }
 }
 
+// 定时器版本
+export const throttleV2 = (fn: Function, delay: number, context: Object): Function => {
+  let timer:any = null
+  return function() {
+    if(timer) return false
+    const args = [].slice.call(arguments)
+    timer = setTimeout(() => {
+      fn.apply(context, args)
+      timer = null
+    }, delay)
+  }
+}
+
 export default throttle

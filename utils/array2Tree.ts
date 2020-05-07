@@ -4,62 +4,90 @@ var target = [
   ["a", "ab", "aba"],
   ["a", "aa", "aab"]
 ]
-function array2Tree(targetArr) {
+// [
+//   {
+//       "name" : "a",
+//       "child" : [
+//           {
+//               "name" : "aa",
+//               "child" : [
+//                   {
+//                       "name" : "aaa",
+//                       "child" : [
+//                           {
+//                               "name" : "aaaa",
+//                               "child" : []
+//                           }
+//                       ]
+//                   },
+//                   {
+//                       "name" : "aab",
+//                       "child" : []
+//                   }
+//               ]
+
+//           },
+//           {
+//               "name" : "ab",
+//               "child" : [
+//                   {
+//                       "name": "aba",
+//                       "child" : []
+//                   }
+//               ]
+
+//           }
+//       ]
+//   },
+//   {
+//       "name": "b",
+//       "child" : [
+//           {
+//               "name" : "bb",
+//               "child" : [
+//                   {
+//                       "name" : "bbb",
+//                       "child" : []
+//                   }
+//               ]
+//           }
+//       ]
+//   }
+// ]
+// 思路跟上面之前的差不多，先把二维数组转换成对象，同时记录它的 parentId 
+function convertArray2Tree(list: any) {
+  const map = {}
   const res = []
-  const o = {}
-  const m = new Map()
-  targetArr.forEach(subArr => {
-    const tmpObj = m.get(subArr[0])
-    // 检测是否已存在 map 中
-    if(subArr.length && !tmpObj) {
-      m.set(subArr[0], {
-        name: subArr[0],
-        child: tranformHelper(subArr.slice(1))
-      })
-    } else if (tmpObj) {
-      // 检测前面的 key 值是否一致
-      const res = hasChild(tmpObj.child, subArr.slice(1))
-      if (res.child.length) {
-        res.child.push(
-          ...tranformHelper(subArr.slice(res.index))
-        )
+  for(let i = 0; i < list.length; i++) {
+    let row = list[i]
+    for(let j = 0; j < row.length; j++) {
+      let item = row[j]
+      // 在 map 上创建该节点的对象
+      if(!map[item]) {
+        map[item] = {
+          name: item,
+          children: []
+        }
+      }
+      // 非第一位，则记录其父节点
+      if(j > 0) {
+        map[item].parentId = row[j - 1]
+      }
+      if(!map[item].parentId) {
+        !res.some(root => root.name === map[item].name) && res.push(map[item])
       } else {
-        tmpObj.child.push(
-          ...tranformHelper(subArr.slice(1))
-        )
+        map[map[item].parentId].children.push(item)
       }
-      m.set(subArr[0], tmpObj)
     }
-  })
-  return m.values()
-}
-function tranformHelper(arr) {
-  if(!arr.length) return []
-  let children = []
-  // arr.forEach(item => {
-  children.push({
-    name: arr[0],
-    child: tranformHelper(arr.slice(1))
-  })
-  // })
-  return children
-}
-function hasChild(children, keyArr) {
-  let lastChild = null
-  let curChildren = children
-  let i = 0
-  for(; i < keyArr.length; i++) {
-    let flag = false
-    curChildren.forEach(childItem => {
-      if(childItem.name === keyArr[i]) {
-        flag = true
-        lastChild = childItem.child
-      }
-    })
-    if(!flag) break
   }
-  return {
-    child: lastChild || [],
-    index: lastChild ? ++i : -1
-  }
+  // for(let k in map) {
+  //   let item = map[k]
+  //   if(!item.parentId) {
+  //     res.push(item)
+  //   } else if(map[item.parentId]) {
+  //     map[item.parentId].children.push(item)
+  //   }
+  // }
+  console.log(map)
+  return res
 }

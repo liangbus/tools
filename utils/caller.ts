@@ -19,6 +19,19 @@ interface Object {
   __fn__: Function
 }
 
+function aNew(){
+  // 将 arguments 对象转为数组
+  var args = [].slice.call(arguments);
+  // 取出构造函数
+  var constructor = args.shift();
+  // 创建一个空对象，继承构造函数的 prototype 属性
+  var context = Object.create(constructor.prototype);
+  // 执行构造函数
+  var result = constructor.apply(context, args);
+  // 如果返回结果是对象，就直接返回，否则返回 context 对象
+  return (typeof result === 'object' && result !== null) ? result : context;
+}
+
 Function.prototype.__call__ = function(context: Object, ...args: []) {
   context.__fn__ = this;
   let res = context.__fn__(...args);
@@ -42,12 +55,12 @@ Function.prototype.__bind__ = function(context, ...args) {
 /**
  * 函数柯里化
 */
-const __curry__ = function(fn: Function, context: Object, args: any) {
+const __curry__ = function(fn: Function, context: Object, ...args: any) {
   let length = this.length
-  args = args || []
+  let _args = [].slice.call(arguments, 2)
   context = context || window
   return function() {
-    let subArgs = args.slice(0)
+    let subArgs = _args.slice.call(arguments)
     
     // 拼接新的参数
     for(let i = 0; i < arguments.length; i++) {
